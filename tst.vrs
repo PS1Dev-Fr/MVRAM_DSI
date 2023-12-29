@@ -1,0 +1,49 @@
+# Vram Scripte test
+
+DefPalette (640,0,256,32)
+
+Path         C:\dsed\mvram\DataFont\Data\Fontes\LowRes
+#Fonts	(typocine.raw,Pal,0,640,256,256,33,8,1,0)
+#Fonts	(normale.iff,Pal,0,640,256,256,33,8,1,0)
+#Fonts	(moto.iff,Pal,0,640,256,256,49,8,1,0)
+Fonts	(f2b.iff,Pal,1,704,256,256,32,8,5,0)
+#Fonts	(typo0118.iff,Pal,1,768,256,256,32,8,5,0)
+Fonts	(debug.raw,Pal,0,768,256,256,32,8,0,0)
+
+Path         C:\dsed\mvram
+LoadBS	(title2.bs,320,256)
+
+#LoadTim (TIM\*.tim)
+
+AutoPos	(1280,32,640,224)
+#AutoPos (340,32,100,320)
+	Algo 	(HORIZONTAL)
+#	Algo 	(OPTIMUM)
+
+#	ImgAdd	(00000337.raw)
+#	ImgAdd	(00000338.raw)
+#	ImgAdd	(00000339.raw)
+                Path         (C:\dsed\mvram\DataFont\Data\Fontes\LowRes)
+                ImgAdd    (ChFond.raw)
+                ImgAdd    (paralax1.raw)
+                ImgAdd    (paralax2.raw)
+                ImgAdd    (paralax3.raw)
+                ImgAdd    (start.raw)
+                ImgAdd    (Rev_on_d.raw)
+                ImgAdd    (Rev_on_l.raw)
+                ImgAdd    (Rev_offd.raw)
+                ImgAdd    (Rev_offl.raw)
+	Path 	(C:\morphnew\srclean\MENU\GRAPH)
+
+#	ImgDCP 	(Typo0117.iff)
+#	ImgDCP 	(Tinyfnt1.iff)
+#	ImgDCP 	(Typo0304.iff)
+#	ImgDCP 	(Tubmenu1.iff)
+#	ImgDCP 	(Psx.iff)
+#	ImgDCP 	(Curseur.iff)
+#	ImgDCP 	(Cd1.iff)
+
+EndAutoPos
+Path c:\dsed\mvram
+Out	(tst.vrm,VRAM)
+Out 	(TIM,TIM)

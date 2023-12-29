@@ -1,0 +1,69 @@
+Scripte MVRAM
+~~~~~~~~~~~~~
+
+Les lignes commencant par # ou ; sont ignorées.
+
+input file type supported: *.raw *.iff *.tim *.tga
+
+
+
+Inites :
+--------
+
+DefPalette	(x,y,w,h)									16bits coord
+DefVram		(x,y,w,h)									16bits coord, (default x=320,y=0,w=704,h=512)
+SetVramHI												use TPAGEPC
+SetVramLO												use TPAGEPSX (default)
+
+
+Commands:
+---------
+
+; les 2 commandes suivante fonctionnent aussi dans AutoPos
+NormalRemap16											Remap "normal" en 16 couleur palette trié par luminance
+OriginalRemap16											Magouille a fufu sur le noir dans le remap
+
+AutoPos		(x,y,w,h)									8bits coord
+	AddZone	(x,y,w,h)									// to do !!!
+	Set16X256											vrm 16and256 color											
+	UnSet16X256											vrm only 16  color and only 256 color
+	SetZoneFilter(Nb)									put magenta color for filer in pc
+	UnSetZoneFilter										don't put magenta color
+	Algo	(Type)										Type: MAXREC,OPTIMUM,HORIZONTAL,VERTICAL,SELONFORME
+	Path	(Path)	
+	ImgDCP	(Name,BackColDCP)							BackColDCP default 0
+	ImgAdd	(Name)
+	ImgPos	(Name,x,y)									// to do !!!
+EndAutoPos
+
+SetZoneFilter(Nb)										put magenta color for filer in pc
+UnSetZoneFilter											don't put magenta color
+SetNbPageFontW(Nb)										(default 1)
+
+
+Path		(Path)
+PathH		(Path)										Path of *.h file 
+
+Fonts		(Name,type,Spd,Rot,x,y,h,first,Sp,Sw,Sh,PropWSize)	16bits coord, x%64,h:0->255,Type: PAL,INTER,MOTO Spd: 0 Fast 1 Opt
+FontsI		(NameFnt,NameFti,Spd,x,y,h,Mode)			16bits coord, x%64,h:0->255 Spd: 0 Fast 1 Opt Mode: 0 Norm 1 Precalc Swp
+
+Page		(Name,x,y)									16bits coord
+
+Img			(Name,x,y)									// to do !!!
+
+LoadTim		(Path,AutoPal,Trans)						List of Tim, Auto Pos Pal : 0/1, Trans : 0/4
+
+LoadBS		(Name,w,h)									PSX MDEC BS file
+
+StaticTXT	(Name,TXT,Type)								Name -> Define Name 
+
+LoadBIN		(Name)										Data Binary
+
+LoadPAL		(Name,Mode)									Load palette(raw,iff,tim) Mode:RAMCLUT,RAMRGB,VRAM
+
+AddBlk		(Name,u0,v0,u1,v1,u2,v2,u3,v3,tpage,clut)   Add one manual block
+
+Out			(Name,VRM)									save out file VRM
+
+Out			(Path,TIM)									save out file TIM
+OutBlk		(Path,x,y,w,h)								save a blk of vram
